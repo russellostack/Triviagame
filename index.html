@@ -9,6 +9,7 @@
         integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <title>Trivia Game</title>
 
 </head>
 
@@ -16,8 +17,22 @@
     <div class="container">
         <div class="card" id="maincard">
             <div class="card-body">
-                
-
+                <div class="row">
+                    <h1>Timer</h1>
+                    <p id="time-remaining">Time Remaining: </p><span id="timer"></span>
+                </div>
+                <div class="row">
+                    <div id="question"></div>
+                </div>
+                <div class="row">
+                    <div id="answers">
+                        <input type=radio id="a1">
+                        <input type=radio id="a2">
+                        <input type=radio id="a3">
+                        <input type=radio id="a4">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
