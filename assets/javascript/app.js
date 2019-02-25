@@ -11,6 +11,7 @@
 //at end of questions, display number of correct answers, wrong answers, and the right answers to the questions guessed incorrectly.
 //total reset button
 
+
 var objectObj= {
     q1:{
         question:"How tall is the tallest Pyramid at Giza?",
@@ -70,11 +71,28 @@ var currentQuestion = "";
 var currentAnswerBank = [];
 var currentRightAnswer = "";
 
+$("#start-game").on("click", function() {
+    $("start-game").remove();
+    popQuestion();
+    resetTimer();
+});
+
+function decrement(){
+    timer--;
+    $("time-remaining").html("<h2>"+ timer+ "</h2>");
+    if (timer===0){
+        gameEnd();
+    }
+}
 function resetTimer() {
     clearInterval(intervalId);
     timer = 30;
     intervalId = setInterval(decrement, 1000);
+    decrement();
 };
 function popQuestion() {
-    $("#timer").
+    $("#timer")
 };
+gameEnd(){
+
+}
