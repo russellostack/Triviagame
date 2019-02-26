@@ -12,67 +12,71 @@
 //total reset button
 
 
-var objectObj= {
-    q1:{
+var questionArray= [
+    {
         question:"How tall is the tallest Pyramid at Giza?",
         answers: ["481 Feet", "400 Feet", "140 Meters", "1000 feet"],
-        correct:"481 Feet"
+        correct:0
     },
-    q2:{
+    {
         question:"Whats the name of the tallest Pyramid?",
         answers:["Khafre's Pyramid", "Khufu's Pyramid", "Menkaure's Pyramid", "Tutankhamun's Pyramid"],
-        correct:"Khufu's Pyramid"
+        correct:1
     },
-    q3:{
+    {
         question: "What are The Pyramids made out of?",
         answers: ["Limestone", "Basalt", "Sandstone", "Granite"],
-        correct: "Granite"
+        correct:3
     },
-    q4:{
+    {
         question: "What were the Pyramids capped with after construction finished?",
         answers:["Gold and Basalt", "Gold and Limestone", "Bronze and Granite", "Granite and Gold"],
-        correct:"Gold and Limestone"
+        correct:1
     },
-    q5:{
+    {
         question: "How may Pyramids are at Giza?",
         answers:["3", "2", "6", "10"],
-        correct: "6"
+        correct: 2
     },
-    q6:{
+    {
         question:"how tall is the shortest Pyramid at Giza?",
         answers: ["50 Feet", "210 Feet", "106 Feet", "80 Feet"], 
-        correct: "106 Feet"
+        correct:2
     },
-    q7:{
+    {
         question:"When was the title of tallest man made structure taken from the Pyramid of Khufu?",
         answers: ["852 A.D.", "1835 A.D.", "204 B.C.", "1311 A.D."],
-        correct: "1311 A.D."
+        correct: 3
     },
-    q8:{
+    {
         question: "What are the three Pyramids north of Khufu called?",
-        answers:["The Pyrmids of the Builders", "The Queen's Pyramids", "Tomb of Hemon", "The Great Sphinx"],
-        correct: "The Queen's Pyramids"
+        answers:["The Pyrmids of the Builders", "The Queen's Pyramids", "Tomb of Hemon", "The Great Sphinx Pyramid"],
+        correct:1
     },
-    q9:{
+    {
         question:"What group of people mainly built The Pyramids?",
         answers:["Priests", " Foreign Slaves", "Egyptian Farmers", "Aliens"], 
-        correct: "Egyptian Farmers"
+        correct: 2
     },
-    q10:{
+    {
         question: "Every Pyramid has a base that is a: ",
         answers: ["Perfect Rectangle", "Perfect Triangle", "Perfect Square", "Perfect Circle"],
-        correct:"Perfectly Square"
+        correct:2
     }
-}
+]
 
 var timer = 0;
 var intervalId;
-var currentQuestion = "";
-var currentAnswerBank = [];
-var currentRightAnswer = "";
+var questionCounter=0
+var answerCounter=0
 
 $("#start-game").on("click", function() {
-    $("start-game").remove();
+    console.log(timer);
+    $("start-game").addClass("hidden");
+    $("timerow").removeClass("hidden");
+    $("questionRow").removeClass("hidden");
+    $("answerRow").removeClass("hidden");
+    $("submitrow").removeClass("hidden");
     popQuestion();
     resetTimer();
 });
@@ -90,8 +94,14 @@ function resetTimer() {
     intervalId = setInterval(decrement, 1000);
     decrement();
 };
+
 function popQuestion() {
-    $("#timer")
+    $("question").html(questionArray[questionCounter])
+    $("#a1").html(questionArray[questionCounter].answers[0]);
+    $("#a2").html(questionArray[questionCounter].answers[1]);
+    $("#a3").html(questionArray[questionCounter].answers[2]);
+    $("#a4").html(questionArray[questionCounter].answers[3]);
+    questionCounter++;
 };
 gameEnd(){
 

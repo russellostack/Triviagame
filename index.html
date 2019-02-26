@@ -18,22 +18,30 @@
         <div class="card" id="maincard">
             <div class="card-body">
                 <button type="button" class="btn btn-primary" id="start-game">Start Game</button>
-                <div class="row">
+                <div class="row, hidden" id="timeRow">
                     <h1>Timer</h1>
                     <p id="time-remaining">Time Remaining: </p><span id="timer"></span>
                 </div>
-                <div class="row">
+                <div class="row, hidden" id="questionRow">
                     <div id="question"></div>
                 </div>
-                <div class="row">
+                <div class="row, hidden" id="answerRow">
+                    <!-- can't figure out what button type to use -->
+                    <div>
+                        <button type="button" class="btn" id="option1"></button>
+                        <button type="button" class="btn" id="option2"></button>
+                        <button type="button" class="btn" id="option3"></button>
+                        <button type="button" class="btn" id="option4"></button>
+
+                    </div>
                     <div id="answers">
-                        <input type=radio id="a1">
-                        <input type=radio id="a2">
-                        <input type=radio id="a3">
-                        <input type=radio id="a4">
+                        <input type=radio value=0><span id="a1"></span>
+                        <input type=radio value=1><span id="a2"></span>
+                        <input type=radio value=2><span id="a3"></span>
+                        <input type=radio value=3><span id="a4"></span>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row, hidden" id="submitRow">
                     <button type="button" class="btn btn-primary" id="submit">Submit</button>
                 </div>
             </div>
