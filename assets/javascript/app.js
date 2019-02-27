@@ -11,7 +11,7 @@
 //at end of questions, display number of correct answers, wrong answers, and the right answers to the questions guessed incorrectly.
 //total reset button
 
-
+$(document).ready(function(){;
 var questionArray= [
     {
         question:"How tall is the tallest Pyramid at Giza?",
@@ -67,23 +67,24 @@ var questionArray= [
 
 var timer = 0;
 var intervalId;
-var questionCounter=0
-var answerCounter=0
+var questionCounter=0;
+var answerCounter=0;
+var correctAnswers=0;
+var wrongAnswers=0;
+var selectedAnswer;
+var rightAnswer;
+$("#submitRow").addClass("d-none");
 
 $("#start-game").on("click", function() {
     console.log(timer);
-    $("start-game").addClass("hidden");
-    $("timerow").removeClass("hidden");
-    $("questionRow").removeClass("hidden");
-    $("answerRow").removeClass("hidden");
-    $("submitrow").removeClass("hidden");
+    $("#start-game").addClass("hidden");
     popQuestion();
     resetTimer();
 });
 
 function decrement(){
     timer--;
-    $("time-remaining").html("<h2>"+ timer+ "</h2>");
+    $("#time-remaining").html("<h2> Time Remaining: "+ timer+ "</h2>");
     if (timer===0){
         gameEnd();
     }
@@ -96,13 +97,66 @@ function resetTimer() {
 };
 
 function popQuestion() {
-    $("question").html(questionArray[questionCounter])
-    $("#a1").html(questionArray[questionCounter].answers[0]);
-    $("#a2").html(questionArray[questionCounter].answers[1]);
-    $("#a3").html(questionArray[questionCounter].answers[2]);
-    $("#a4").html(questionArray[questionCounter].answers[3]);
-    questionCounter++;
+    if (questionCounter ===10){
+        gameEnd();
+    }
+    else {    
+        console.log(questionCounter);
+        $("#answerRow").empty();
+        $("#questionRow").empty();
+        question = questionArray[questionCounter].question;
+        $("#questionRow").append(question);
+        questionArray[questionCounter].answers.forEach(element => {
+            var button=$("<button>");
+            button.addClass("btn btn-primary btn-answer");
+            button.attr("correctAnswer", questionArray[questionCounter].answers[questionArray[questionCounter].correct]);
+            button.text(element);
+            $("#answerRow").append(button);
+            $("#submitRow").removeClass("d-none");
+        });
+    };
 };
-gameEnd(){
+$(document).on("click", ".btn-answer", function(){
+    selectedAnswer = $(this).text();
+    rightAnswer = $(this).attr("correctAnswer");
+    console.log(selectedAnswer);
+    console.log(rightAnswer);
 
-}
+});
+
+$(document).on("click", "#submit", function(){
+    if (rightAnswer === selectedAnswer){
+        correctAnswers++;
+        questionCounter++;
+        popQuestion();
+        resetTimer();
+        console.log("question Counter: " + questionCounter);
+        console.log("correct answers: " +correctAnswers);
+        console.log("wrong Asnwers: "+wrongAnswers);
+    }
+    else {
+        wrongAnswers++;
+        questionCounter++;
+        popQuestion();
+        resetTimer();
+    }
+});
+function gameEnd(){
+    $("#answerRow").empty();
+    $("#questionRow").empty();
+    $("#submit").empty();
+    $("#submit").removeClass("btn btn-primary")
+    clearInterval(intervalId);
+    console.log(questionCounter);
+    console.log(correctAnswers);
+    console.log(wrongAnswers);
+    $("#submitRow").remove();
+    $("#questionRow").append("<h1>Game Over!</h1>");
+    $("#answerRow").append("<p> Correct answers: "+ correctAnswers + " Wrong Answers: "+ wrongAnswers + "</p>");
+};
+// me trying to figure out how to clear the screen at game end by removing divs. it didn't work.
+// function removeElement(id) {
+//     var elem = document.getElementById(id);
+//     return elem.parentNode.removeChild(elem);
+// }
+});

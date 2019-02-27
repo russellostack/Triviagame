@@ -2,6 +2,74 @@ body{
     font-family: 'Oswald', sans-serif;
 
 }
+.container{
+    width:80%;
+    height:400px;
+}
+h1{
+    font-size: 24px;
+    display:inline-block;
+}
+h2{
+    padding:30px;
+    float:left;
+    font-size:30px;
+}
+#time-remaining{
+    float:center;
+}
 .hidden{
     display:none;
+}
+.button{
+    margin:10px 30px;
+    display: inline-block;
+}
+.btn{
+    padding:30px;
+    margin:20px;
+    float:left;
+}
+.button-primary{
+    margin:20px;
+
+}
+p{
+    font-family: "Times New Roman", Times, serif;
+
+}
+.row{
+    margin:10px;
+    padding:10px;
+    flex-wrap:nowrap;
+}
+#timeRow{
+    float:center;
+    margin:20px;
+    padding:20px;
+
+}
+#submit{
+    height:60px;
+    width:200px;
+    position:fixed;
+}
+#submitRow{
+    height:60px;
+    width:200px;
+    float:left;
+}
+#answerRow{
+    float:left;
+    padding:20px;
+    margin:20;
+}
+#questionRow{
+    padding:20px;
+    margin:20;
+    font-size: 20px;
+}
+#timer{
+    padding:20px;
+    margin:20px;
 }
