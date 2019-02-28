@@ -91,7 +91,7 @@ function decrement(){
 }
 function resetTimer() {
     clearInterval(intervalId);
-    timer = 30;
+    timer = 3000;
     intervalId = setInterval(decrement, 1000);
     decrement();
 };
@@ -131,7 +131,7 @@ $(document).on("click", "#submit", function(){
         popQuestion();
         resetTimer();
         console.log("question Counter: " + questionCounter);
-        console.log("correct answers: " +correctAnswers);
+        console.log("Correct Answers: " +correctAnswers);
         console.log("wrong Asnwers: "+wrongAnswers);
     }
     else {
@@ -152,7 +152,7 @@ function gameEnd(){
     console.log(wrongAnswers);
     $("#submitRow").remove();
     $("#questionRow").append("<h1>Game Over!</h1>");
-    $("#answerRow").append("<p> Correct answers: "+ correctAnswers + " Wrong Answers: "+ wrongAnswers + "</p>");
+    $("#answerRow").append("<p> Correct Answers: "+ correctAnswers + " Wrong Answers: "+ wrongAnswers + "</p>");
 };
 // me trying to figure out how to clear the screen at game end by removing divs. it didn't work.
 // function removeElement(id) {

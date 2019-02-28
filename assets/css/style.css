@@ -1,10 +1,22 @@
 body{
     font-family: 'Oswald', sans-serif;
-
+    font-size: 24px;
 }
 .container{
-    width:80%;
+    width:100%;
     height:400px;
+    margin:auto;
+}
+.card{
+    width:100%;
+    margin:auto;
+    padding:10px;
+    background-color: rgb(255, 196, 0);
+}
+.row{
+    margin:10px;
+    padding:10px;
+    flex-wrap:nowrap;
 }
 h1{
     font-size: 24px;
@@ -16,7 +28,9 @@ h2{
     font-size:30px;
 }
 #time-remaining{
-    float:center;
+    float:right;
+    position: relative;
+    border: 4px outset;
 }
 .hidden{
     display:none;
@@ -34,40 +48,32 @@ h2{
     margin:20px;
 
 }
+#start-game{
+    float:left;
+    position: relative;
+}
 p{
     font-family: "Times New Roman", Times, serif;
 
 }
-.row{
-    margin:10px;
-    padding:10px;
-    flex-wrap:nowrap;
-}
+
 #timeRow{
-    float:center;
+    float:right;
     margin:20px;
     padding:20px;
 
 }
-#submit{
-    height:60px;
-    width:200px;
-    position:fixed;
-}
 #submitRow{
-    height:60px;
-    width:200px;
-    float:left;
+    clear: both;
 }
 #answerRow{
     float:left;
-    padding:20px;
-    margin:20;
+    margin:auto;
 }
 #questionRow{
     padding:20px;
     margin:20;
-    font-size: 20px;
+    font-size: 40px;
 }
 #timer{
     padding:20px;
