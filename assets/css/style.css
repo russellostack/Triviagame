@@ -1,6 +1,9 @@
 body{
     font-family: 'Oswald', sans-serif;
     font-size: 24px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 .container{
     width:100%;
@@ -14,13 +17,20 @@ body{
     background-color: rgb(255, 196, 0);
 }
 .row{
-    margin:10px;
     padding:10px;
     flex-wrap:nowrap;
 }
 h1{
-    font-size: 24px;
+    font-size: 50px;
     display:inline-block;
+    animation:blinkingText 0.8s infinite;
+}
+@keyframes blinkingText{
+    0%{		color: #000;	}
+    49%{	color: transparent;	}
+    50%{	color: transparent;	}
+    99%{	color:transparent;	}
+    100%{	color: #000;	}
 }
 h2{
     padding:30px;
@@ -40,7 +50,7 @@ h2{
     display: inline-block;
 }
 .btn{
-    padding:30px;
+    padding:20px;
     margin:20px;
     float:left;
 }
@@ -54,17 +64,18 @@ h2{
 }
 p{
     font-family: "Times New Roman", Times, serif;
-
 }
 
 #timeRow{
     float:right;
-    margin:20px;
+    margin:30px;
     padding:20px;
 
 }
 #submitRow{
     clear: both;
+    margin:auto;
+    float:left;
 }
 #answerRow{
     float:left;
@@ -73,9 +84,49 @@ p{
 #questionRow{
     padding:20px;
     margin:20;
+    margin-left:20px;
     font-size: 40px;
+    height:250px;
+    border-bottom: 4px solid;
+
 }
 #timer{
     padding:20px;
     margin:20px;
+}
+@media screen and (max-width: 992px){
+    #questionRow{
+        font-size: 35px;
+        height:200px;
+        padding:0px;
+        margin:10px;
+        border-bottom: 2px solid;
+    }
+    #timeRow{
+        padding:0px;
+        margin:15px;
+        padding:10px;
+    }
+    h2{
+        font-size: 17px;
+        padding:10px;
+    }
+}
+@media screen and (max-width: 700px){
+    #questionRow{
+        font-size: 30px;
+        height:150px;
+        padding:0px;
+        margin:5px;
+        border-bottom:1px solid
+    }
+    #timeRow{
+        padding:0px;
+        margin:10px;
+        padding:5px;
+    }
+    h2{
+        font-size: 10px;
+        padding:5px;
+    }
 }

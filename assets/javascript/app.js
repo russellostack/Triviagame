@@ -1,16 +1,3 @@
-//initialize page
-//create object with question sub-objects.
-//question objects contain question, answers, and correct answer atributes.
-//populate html card with first question, and possible answers in radio buttons
-//set timer - 30 seconds
-//initialize confirmation button
-//alert button with yes/no confirmation that starts upon confirmation button click
-//no confirmation results in timer continuation
-//lack of confirmation results in a loss, and a reset of the timer, new question population.
-//yes confirmation results in logging of question correctness, reet of page with new question object, Timer reset
-//at end of questions, display number of correct answers, wrong answers, and the right answers to the questions guessed incorrectly.
-//total reset button
-
 $(document).ready(function(){;
 var questionArray= [
     {
@@ -64,24 +51,24 @@ var questionArray= [
         correct:2
     }
 ]
-
 var timer = 0;
 var intervalId;
 var questionCounter=0;
-var answerCounter=0;
 var correctAnswers=0;
 var wrongAnswers=0;
 var selectedAnswer;
 var rightAnswer;
-$("#submitRow").addClass("d-none");
 
+
+//start game on-click function, hides start button, displays the submit row and runs the question population function and timer function
 $("#start-game").on("click", function() {
-    console.log(timer);
     $("#start-game").addClass("hidden");
+    $("submitRow").addClass("display:flex");
     popQuestion();
     resetTimer();
 });
 
+//timer countdown function updates dom, and checks if time has run out
 function decrement(){
     timer--;
     $("#time-remaining").html("<h2> Time Remaining: "+ timer+ "</h2>");
@@ -89,19 +76,20 @@ function decrement(){
         gameEnd();
     }
 }
+// basic timer function
 function resetTimer() {
     clearInterval(intervalId);
-    timer = 3000;
+    timer = 300;
     intervalId = setInterval(decrement, 1000);
     decrement();
 };
-
+// checks if the quiz is over, else emptys previous question, populates question div with question
+// and buttons with new answers. also resets correct/selected variables every time.
 function popQuestion() {
     if (questionCounter ===10){
         gameEnd();
     }
     else {    
-        console.log(questionCounter);
         $("#answerRow").empty();
         $("#questionRow").empty();
         question = questionArray[questionCounter].question;
@@ -116,23 +104,19 @@ function popQuestion() {
         });
     };
 };
+// when one option is selected this updates the selected/right answer variables to store until submission.
 $(document).on("click", ".btn-answer", function(){
     selectedAnswer = $(this).text();
     rightAnswer = $(this).attr("correctAnswer");
-    console.log(selectedAnswer);
-    console.log(rightAnswer);
-
 });
 
+//runs submit check on selected vs right answers, updates counters accordingly and starts the next question
 $(document).on("click", "#submit", function(){
     if (rightAnswer === selectedAnswer){
         correctAnswers++;
         questionCounter++;
         popQuestion();
         resetTimer();
-        console.log("question Counter: " + questionCounter);
-        console.log("Correct Answers: " +correctAnswers);
-        console.log("wrong Asnwers: "+wrongAnswers);
     }
     else {
         wrongAnswers++;
@@ -141,22 +125,16 @@ $(document).on("click", "#submit", function(){
         resetTimer();
     }
 });
+//empties all divs, clears timer, updates divs with correct/wrong answer variables and a cool flashing game over header.
 function gameEnd(){
     $("#answerRow").empty();
     $("#questionRow").empty();
     $("#submit").empty();
     $("#submit").removeClass("btn btn-primary")
     clearInterval(intervalId);
-    console.log(questionCounter);
-    console.log(correctAnswers);
-    console.log(wrongAnswers);
     $("#submitRow").remove();
+    $("#timeRow").remove();
     $("#questionRow").append("<h1>Game Over!</h1>");
     $("#answerRow").append("<p> Correct Answers: "+ correctAnswers + " Wrong Answers: "+ wrongAnswers + "</p>");
 };
-// me trying to figure out how to clear the screen at game end by removing divs. it didn't work.
-// function removeElement(id) {
-//     var elem = document.getElementById(id);
-//     return elem.parentNode.removeChild(elem);
-// }
 });
