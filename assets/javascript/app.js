@@ -79,15 +79,17 @@ function decrement(){
 // basic timer function
 function resetTimer() {
     clearInterval(intervalId);
-    timer = 300;
+    timer = 30;
     intervalId = setInterval(decrement, 1000);
     decrement();
 };
 // checks if the quiz is over, else emptys previous question, populates question div with question
 // and buttons with new answers. also resets correct/selected variables every time.
 function popQuestion() {
+    question="";
     if (questionCounter ===10){
         gameEnd();
+        questionCounter = 0;
     }
     else {    
         $("#answerRow").empty();
@@ -130,11 +132,22 @@ function gameEnd(){
     $("#answerRow").empty();
     $("#questionRow").empty();
     $("#submit").empty();
-    $("#submit").removeClass("btn btn-primary")
     clearInterval(intervalId);
-    $("#submitRow").remove();
     $("#timeRow").remove();
     $("#questionRow").append("<h1>Game Over!</h1>");
+    $("#start-game").addClass("hidden");
+
     $("#answerRow").append("<p> Correct Answers: "+ correctAnswers + " Wrong Answers: "+ wrongAnswers + "</p>");
+    var button=$("button").attr("class","btn reset-button").on("click", function(){
+        $("#button").attr("value", "Reset")
+        question = questionArray[questionCounter].question;
+        wrongAnswers=0;
+        correctAnswers=0;
+        questionCounter=0;
+        popQuestion();
+        resetTimer();
+
+    });
+    $("submitRow").append(button);
 };
 });

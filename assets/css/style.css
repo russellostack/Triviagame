@@ -6,6 +6,7 @@ body{
     background-position: center;
 }
 .container{
+    padding:10px;
     width:100%;
     height:400px;
     margin:auto;
@@ -93,6 +94,12 @@ p{
 #timer{
     padding:20px;
     margin:20px;
+}
+.reset-button{
+    float:left;
+    padding:20px;
+    font-size: 30px;
+    float:left;
 }
 @media screen and (max-width: 992px){
     #questionRow{
