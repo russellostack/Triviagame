@@ -151,3 +151,6 @@ function gameEnd(){
     $("submitRow").append(button);
 };
 });
+//I would have liked to add a reset function but this was the best i could do in the time i have left. i had a lot of trouble with the adding and removing of Divs/classes..
+//had it worked i would have had the reset function reset all the 4 divs, hide the start button, and then create a reset button that reset all the counters, then ran the popQuestion
+//function again.
